@@ -7,7 +7,7 @@
 * Created May 2019
 * URL: https://github.com/ggodkin/EMS
 */
-///*
+/*
 #include <TM1638plus.h>
 
 // GPIO I/O pins on the Arduino connected to strobe, clock, data, 
@@ -151,13 +151,17 @@ void setDisplay() {
 //itoa(ctrlFreqDiv,valStr, 10);
   tm.displayText(valStr);
 }
-//*/
-/*
-#include <TM1638lite.h>
+*/
 #include <TM1638plus.h>
 // I/O pins on the Arduino connected to strobe, clock, data
-TM1638plus tm(0, 1, 2);
-//TM1638lite tm(0, 1, 2);
+//pick on any I/O you want.
+#define  STROBE_TM 0
+#define  CLOCK_TM 1
+#define  DIO_TM 2
+
+//Constructor object
+TM1638plus tm(STROBE_TM, CLOCK_TM , DIO_TM);
+
 //Analog input to control Duty cycle
   int analogPin = A0;
   int valADC = 0;
@@ -197,9 +201,9 @@ void loop() {
   bPWM = 255-aPWM;
   OCR2A = aPWM;
   OCR2B = bPWM;
-  char tmpV[10];
-  itoa(aPWM,tmpV, 10);
-  tm.displayText(tmpV);
+  char char_aPWM[10];
+  itoa(aPWM,char_aPWM, 10);
+  tm.displayText(char_aPWM);
   valInd = aPWM/19;
   for (int il = 4; il <= 10; il++) {
     digitalWrite (il,LOW);
@@ -214,4 +218,4 @@ void doLEDs(uint8_t value) {
     value = value >> 1;
   }
 }
-*/
+
