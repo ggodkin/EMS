@@ -7,7 +7,7 @@
 * Created May 2019
 * URL: https://github.com/ggodkin/EMS
 */
-///*
+/*
 #include <TM1638plus.h>
 
 // GPIO I/O pins on the Arduino connected to strobe, clock, data, 
@@ -151,8 +151,8 @@ void setDisplay() {
 //itoa(ctrlFreqDiv,valStr, 10);
   tm.displayText(valStr);
 }
-//*/
-/*
+*/
+///*
 #include <TM1638lite.h>
 #include <TM1638plus.h>
 // I/O pins on the Arduino connected to strobe, clock, data
@@ -214,4 +214,4 @@ void doLEDs(uint8_t value) {
     value = value >> 1;
   }
 }
-*/
+//*/
