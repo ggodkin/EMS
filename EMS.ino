@@ -148,5 +148,6 @@ void setDisplay() {
   strcat(valStr,charFreq);
   strcat(valStr,charPWM);
   tm.brightness(displayBrightness);
+  tm.displayText("        ");
   tm.displayText(valStr);
 }
