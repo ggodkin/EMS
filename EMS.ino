@@ -132,7 +132,7 @@ void resetPWM () {
 }
 
 void setDisplay() {
-  char valStr[10] = "";
+  char valStr[20] = "";
   char charPWM[8] = "";
   char charFreq[8] = "";
   if (ctrlFreqDiv == 1024) {
@@ -148,6 +148,5 @@ void setDisplay() {
   strcat(valStr,charFreq);
   strcat(valStr,charPWM);
   tm.brightness(displayBrightness);
-  tm.displayText("        ");
   tm.displayText(valStr);
 }
