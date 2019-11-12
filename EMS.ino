@@ -61,14 +61,14 @@ void loop() {
         calcPWM(ctrlPWM, 1, 0); //Increment PWM by 1
       } else if (buttons == 16) {
         calcPWM(ctrlPWM, 10, 0); //Increment PWM by 10
-      } else if (buttons == 32) { //Decrease frequency
+      } else if (buttons == 64) { //Increase frequency
         if (ctrlFreqDiv <= 64) {
           ctrlFreqDiv = 64;
         } else {
           ctrlFreqDiv = ctrlFreqDiv / 4;
         }
         setTimerOC2PreScaler(ctrlFreqDiv);
-      } else if (buttons == 64) { //Increase frequency
+      } else if (buttons == 32) { //Decrease frequency
         if (ctrlFreqDiv >= 1024) {
           ctrlFreqDiv = 1024;
         } else {
@@ -136,19 +136,17 @@ void setDisplay() {
   char charPWM[8] = "";
   char charFreq[8] = "";
   if (ctrlFreqDiv == 1024) {
-    strcat(charFreq, "32 H");
-  } else if (ctrlFreqDiv == 64) {
     strcat(charFreq, " 2 H");
+  } else if (ctrlFreqDiv == 64) {
+    strcat(charFreq, "32 H");
   } else { 
     strcat(charFreq, " 8 H");
   }
 
   itoa(ctrlPWM,charPWM, 10);
-  strcat(charPWM,"t");
+  strcat(charPWM,"t  ");
   strcat(valStr,charFreq);
   strcat(valStr,charPWM);
   tm.brightness(displayBrightness);
-  //tm.displayText("        ");
-//itoa(ctrlFreqDiv,valStr, 10);
   tm.displayText(valStr);
 }
