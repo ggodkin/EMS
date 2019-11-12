@@ -91,6 +91,8 @@ void doLEDs(uint8_t value) {
 }
 
 void setTimerOC2PreScaler(int preScaler) {
+  //TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);  //Fast PWM
+  TCCR2A = _BV(COM2A1) | _BV(COM2B1)  | _BV(COM2B0) | _BV(WGM20);  //Phase-Correct PWM
   if (preScaler == 1024) {
     TCCR2B = _BV(CS22) | _BV(CS21) | _BV(CS20); //clkT2S/1024 (from prescaler)
   } else if (preScaler == 64) {
