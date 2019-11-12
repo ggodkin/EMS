@@ -102,13 +102,11 @@ void setTimerOC2PreScaler(int preScaler) {
   }
   ctrlFreqDiv = preScaler;
   calcPWM(ctrlPWM, 0, 0);
-  setDisplay();
 }
 
 void setPWM(int valOCR2A, int valOCR2B) {
   OCR2A = valOCR2A;
   OCR2B = valOCR2B;
-  setDisplay();
 }
 
 void calcPWM(int currentPWM, int valIncrement, int valDecrement) {
@@ -143,7 +141,7 @@ void setDisplay() {
     strcat(charFreq, " 8 H");
   }
 
-  itoa(ctrlPWM,charPWM, 10);
+  itoa(ctrlPWM,charPWM, 8);
   strcat(charPWM,"t  ");
   strcat(valStr,charFreq);
   strcat(valStr,charPWM);
