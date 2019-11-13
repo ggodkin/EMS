@@ -19,7 +19,7 @@
 TM1638plus tm(STROBE_TM, CLOCK_TM , DIO_TM);
 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
+unsigned long debounceDelay = 2;    // the debounce time; increase if the output flickers
 uint8_t buttonState;             // the current reading from the buttons
 uint8_t lastButtonState = 0;   // the previous reading from the buttons
 
@@ -133,30 +133,18 @@ void resetPWM () {
 
 void setDisplay() {
   char valStr[10] = "";
-  //char charPWM[8] = "";
-  //char charFreq[8] = "";
   String myStr = "";
-  //myStr = String(charFreq);
 
   if (ctrlFreqDiv == 1024) {
-    //strcat(charFreq, " 2 H");
     myStr = " 2 H";
   } else if (ctrlFreqDiv == 64) {
-    //strcat(charFreq, "32 H");
     myStr = "32 H";
   } else { 
-    //strcat(charFreq, " 8 H");
     myStr = " 8 H";
   }
 
-  //itoa(ctrlPWM,charPWM, 4);
-  //strcat(charPWM,"t  ");
-  //strcat(valStr,charFreq);
-  //strcat(valStr,charPWM);
   myStr = myStr + ctrlPWM + "t  ";
   tm.brightness(displayBrightness);
-  //tm.displayText("        ");
   myStr.toCharArray(valStr,9,0);
   tm.displayText(valStr);
-  //tm.displayText();
 }
