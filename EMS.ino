@@ -102,7 +102,6 @@ void setTimerOC2PreScaler(int preScaler) {
   }
   ctrlFreqDiv = preScaler;
   calcPWM(ctrlPWM, 0, 0);
-  setDisplay();
 }
 
 void setPWM(int valOCR2A, int valOCR2B) {
@@ -128,7 +127,6 @@ void calcPWM(int currentPWM, int valIncrement, int valDecrement) {
 void resetPWM () {
   setTimerOC2PreScaler(ctrlFreqDiv);
   calcPWM(ctrlPWM, 0, 256);
-  setDisplay();
 }
 
 void setDisplay() {
